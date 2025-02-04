@@ -1,6 +1,6 @@
 # Day 2 - HTML CSS
 
-The output for day 2's challenges i as shown below:
+The outputs for day 2's challenges are as shown below:
 
 ## Google Card
 ![google card output screenshot](./google-card/screenshot/screenshot.png)
