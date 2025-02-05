@@ -16,3 +16,23 @@ async function fecthJoke() {
 }
 
 fecthJoke();
+
+// const jokeFetch = new Promise(async (resolve, reject) => {
+//   try {
+//     const response = await fetch("https://official-joke-api.appspot.com/random_joke");
+//     if (!response.ok) {
+//       reject(`Error fetching joke: ${response.status}`);
+//     }
+//     const data = await response.json();
+//     resolve(data);
+//   } catch (error) {
+//     reject(`Error fetching joke: ${error}`);
+//   }
+// });
+
+// jokeFetch.then(data => {
+//   console.log(data.setup)
+//   console.log(data.punchline)
+// }).catch(error =>
+//   console.error(error)
+// )
