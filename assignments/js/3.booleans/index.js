@@ -15,5 +15,26 @@ function showPaymentsModule(args){
 showPaymentsModule(isAdmin)
 showPaymentsModule(isStudent)
 
-console.log(6 === 6) //true
-console.log('6' === 6) //false
+console.log(6 === 6) // true
+console.log('6' === 6) // false
+console.log('6' !== 6) // true
+console.log('6' != 6) // false
+
+import bcrypt from 'bcrypt'
+
+const password = 'Qfd34nr34!ed'
+const password2 = 'DF458ufh85y4!ed'
+const hashedPassword = bcrypt.hashSync(password, 10)
+console.log(hashedPassword)
+
+const comparePassword = bcrypt.compareSync(password, hashedPassword)
+function auth(){
+  if(comparePassword === true){
+    console.log("> Login Success")
+  } else{
+    console.log("> Login Failed")
+  }
+
+  comparePassword && console.log('\tWelcome')
+}
+auth()
