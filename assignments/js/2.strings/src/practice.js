@@ -1,3 +1,6 @@
+import chalk from 'chalk'
+
+
 /* 1. Check string input
       Write a JavaScript function to check whether an 'input' is a string or not. */
       function is_string(input) {
@@ -76,3 +79,54 @@
         }).join("")
       }
       console.log(swapcase('AaBbc')); // "aAbBC"
+
+/**11.Camelize String
+      Write a JavaScript function to convert a string into camel case. */
+      function camelize(input){
+        return input.split(" ").map((word, index) => {
+          if(index === 0){
+            return `${word.charAt(0).toLowerCase()}${word.substring(1)}`
+          } else{
+            return `${word.charAt(0).toUpperCase()}${word.substring(1)}`
+          }
+        }).join("")
+      }
+      console.log(camelize("JavaScript Exercises")); // "javaScriptExercises"
+      console.log(camelize("this is just another test case")) // "thisIsJustAnotherTestCase"
+
+/**12.​Uncamelize String
+      Write a JavaScript function to uncamelize a string. */
+      console.log(chalk.blue("\n---------------------------"))
+
+      function uncamelize(input, joiner){
+        const finalString = []
+        input.split("").map((letter) => {
+          if (letter === letter.toUpperCase()){
+            if (joiner) {
+              finalString.push("-")
+            } else{
+              finalString.push(" ")
+            }
+            finalString.push(letter.toLowerCase())
+          } else{
+            finalString.push(letter)
+          }
+        })
+
+        return finalString.join("")
+      }
+      console.log(uncamelize('helloWorld','-')); // "hello-world"
+      console.log(uncamelize("justMeTryingOutAnotherTestCase")) // just me trying out another test case
+
+/**13.​Repeat String
+      Write a JavaScript function to concatenate a given string n times. */
+      function repeat(word, count){
+        let newWord = ""
+        for (let i = 1; i <= count; i++){
+          newWord = newWord.concat(word)
+        }
+        return newWord
+      }
+
+      console.log(repeat('Ha!', 3)); // "Ha!Ha!Ha!"
+      console.log(repeat("Wah!", 5)) // Wah!Wah!Wah!Wah!Wah!
