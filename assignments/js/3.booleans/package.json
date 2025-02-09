@@ -13,8 +13,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node index.js",
-    "dev:start": "nodemon index.js"
+    "dev": "node ./src/practice.js",
+    "dev:start": "nodemon ./src/practice.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
