@@ -2,7 +2,7 @@ import chalk from "chalk";
 
 console.log(
   chalk.blue(
-    '------------  1. Check if a string is a palindrome  ---------------'
+    '\n\n------------  1. Check if a string is a palindrome  ---------------'
   )
 );
 
@@ -12,15 +12,15 @@ function isPalindrome(str) {
   return standardizedStr === reversedStr;
 }
 
-console.log(isPalindrome('A man, a plan, a canal, Panama!')); // true
-console.log(isPalindrome('Was it a car or a cat I saw?')); // true
-console.log(isPalindrome('Hello World!'));
+console.log('A man, a plan, a canal, Panama!', isPalindrome('A man, a plan, a canal, Panama!')); // true
+console.log('Was it a car or a cat I saw?', isPalindrome('Was it a car or a cat I saw?')); // true
+console.log('Hello World!', isPalindrome('Hello World!'));
 
 
 
 console.log(
   chalk.blue(
-    '------------  2. Reverse a String  ---------------'
+    '\n\n------------  2. Reverse a String  ---------------'
   )
 );
 
@@ -35,7 +35,7 @@ console.log(reverseString('Duudde!!. Just testing.'));
 
 console.log(
   chalk.blue(
-    '------------  3. Find the Longest Palindromic Substring  ---------------'
+    '\n\n------------  3. Find the Longest Palindromic Substring  ---------------'
   )
 );
 function longestPalindromicString(str) {
@@ -59,7 +59,7 @@ console.log(longestPalindromicString('cbbd')); // bb
 
 console.log(
   chalk.blue(
-    '------------  4. Check if Two Strings are Anagrams  ---------------'
+    '\n\n------------  4. Check if Two Strings are Anagrams  ---------------'
   )
 );
 function areAnagrams(str1, str2) {
@@ -75,7 +75,7 @@ console.log(areAnagrams('Hello', 'World')); // Output: false
 
 console.log(
   chalk.blue(
-    '------------  5. Remove Duplicates from a String  ---------------'
+    '\n\n------------  5. Remove Duplicates from a String  ---------------'
   )
 );
 
@@ -99,7 +99,7 @@ console.log(removeDuplicates('aabbcc')); // Output: 'abc'
 
 console.log(
   chalk.blue(
-    '------------  6. Count Palindromes in a String  ---------------'
+    '\n\n------------  6. Count Palindromes in a String  ---------------'
   )
 );
 
@@ -127,7 +127,7 @@ console.log(countPalindromes('abc'));     // Expected Output: 3
 
 console.log(
   chalk.blue(
-    '------------  7. Longest Common Prefix  ---------------'
+    '\n\n------------  7. Longest Common Prefix  ---------------'
   )
 );
 
@@ -151,7 +151,7 @@ console.log(longestCommonPrefix(['apple', 'banana', 'cherry']));  // Output: ''
 
 console.log(
   chalk.blue(
-    '------------  8. Case Insensitive Palindrome  ---------------'
+    '\n\n------------  8. Case Insensitive Palindrome  ---------------'
   )
 );
 
