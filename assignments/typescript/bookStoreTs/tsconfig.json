@@ -5,7 +5,8 @@
     "strict": true,
     "moduleResolution": "node",
     "allowJs": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "target": "ES2019"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

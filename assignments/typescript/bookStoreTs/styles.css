@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+@import 'tailwindcss';
+
+:root {
+  --foreground: #0c0c0c;
+  --foreground-light: #4a4a4a;
+  --foreground-faded: #4a4a4a2c;
+  --background: #ffffff;
+  --background-light: #ffffff98;
+  --background-faded: #ffffff2c;
+
+  --accent: #0043af;
+  --accent-dark: #00358a;
+
+  --font-size: 1rem;
+  --font-ratio: 1.8;
+}
+
+@theme{
+  --foreground: #0c0c0c;
+  --foreground-light: #4a4a4a;
+  --foreground-faded: #4a4a4a2c;
+  --background: #ffffff;
+  --background-light: #ffffff98;
+  --background-faded: #ffffff2c;
+
+  --accent: #022e75;
+  --accent-dark: #002664;
+
+  --font-size: 1rem;
+  --font-ratio: 1.8;
+}
+
+* {
+  /* margin: 0; */
+  /* padding: 0; */
+  box-sizing: border-box;
+  font-family: 'Funnel Display', serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-transform: capitalize;
+  /* font-family: "Funnel Display", serif; */
+}
+
+h1 {
+  font-size: calc(
+    var(--font-size) * var(--font-ratio) * var(--font-ratio) * var(--font-ratio)
+  );
+  text-transform: uppercase;
+  font-family: 'Nunito Sans', serif;
+}
+
+h2 {
+  font-size: calc(var(--font-size) * var(--font-ratio) * var(--font-ratio));
+}
+
+h3 {
+  font-size: calc(var(--font-size) * var(--font-ratio));
+  font-weight: 600;
+}
+
+h4 {
+  font-size: calc(var(--font-size));
+}
+
+p,
+li,
+label {
+  font-size: calc(var(--font-size) * 1);
+}
+
+[data-theme='light'] .product-card-title {
+  color: var(--background);
+}
+
+.product-card-price {
+  text-wrap: nowrap;
+}
+
+[data-theme='light'] .product-card-price {
+  color: var(--background-light);
+  text-wrap: nowrap;
+}
+
+.grotesk {
+  font-family: 'Host Grotesk', serif;
+}
+
+.italiana {
+  font-family: 'Italiana', serif;
+}
+
+img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+
+button, .button{
+  background-color: var(--accent);
+  color: var(--background);
+  padding: .5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all .3s ease;
+  &:hover{
+    background-color: var(--accent-dark);
+  }
+}
+
+.btn-round{
+  padding: 0.5rem 0.5rem;
+}
+
+.btn-secondary{
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  &:hover{
+    color: var(--background);
+  }
+}
+
+.cart-amnt-btn{
+  padding: 0;
+  width: 1.5rem;
+  aspect-ratio: 1;
+  background: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--foreground-light);
+
+  &:hover{
+    background: var(--foreground-faded);
+  }
+}
+
+.delete {
+  color: #f14747;
+  font-size: .8rem;
+  border: none;
+  width: fit-content;
+  padding: 0;
+  background: transparent;
+  font-weight: 100;
+  border-radius: 0;
+  border-bottom: 1px solid transparent;
+
+  &:hover{
+    background: transparent;
+    border-bottom: 1px solid #f14747;
+  }
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: var(--background-faded);
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: var(--foreground-faded);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background-color: var(--foreground-light);
+}
+
+.close-cursor {
+  cursor: url('/images/close-cursor.webp'), auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s linear;
+}
+
+.transparent-gradient {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.9) 30%,
+    rgba(0, 0, 0, 0) 60%
+  );
+}
+
+.animated-gradient {
+  color: transparent;
+  background: linear-gradient(290deg, #e100ff, #b93d3d, #00adf1);
+  background-size: 180% 180%;
+  animation: gradient-animation 3s ease infinite;
+  background-clip: text;
+}
+
+.animated-background {
+  background: linear-gradient(290deg, #e6e6e6, #dddddd, #ffffff);
+  background-size: 180% 180%;
+  animation: gradient-animation 12s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.solutions-background {
+  background: url('/images/solutions.webp') center/cover no-repeat;
+  background-attachment: fixed;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    backdrop-filter: blur(7.5px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.295);
+  }
+
+  * {
+    z-index: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.3s ease-out;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  /* border: 1px solid var(--foreground); */
+  -webkit-text-fill-color: var(--foreground);
+  -webkit-box-shadow: 0 0 0px 1000px var(--background) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+html {
+  height: 100dvh;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: visible;
+  position: relative;
+  scroll-behavior: smooth;
+  background: var(--background);
+  scroll-padding-top: 5.75rem;
+
+  body {
+    color: var(--foreground);
+
+    header,
+    .admin-nav {
+      width: 100vw;
+      padding: 0.5rem 2rem;
+    }
+    .section,
+    section {
+      width: 100%;
+      height: fit-content;
+      overflow: hidden;
+      flex-shrink: 0 !important;
+      padding: 1rem 2rem;
+      animation: fadeIn 0.5s linear;
+    }
+
+    @media (max-width: 768px) {
+      header,
+      .admin-nav {
+        padding: 0.8rem 1rem;
+      }
+      .section,
+      section {
+        width: 100%;
+        padding: 1rem 1rem;
+      }
+    }
+  }
+}
