@@ -1,1 +1,26 @@
 **/node_modules/
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+yarn-debug.log*
+yarn-error.log*
+yarn.lock
+
+# pnpm
+pnpm-lock.yaml
+.pnpm-store/
+**/node_modules/.pnpm/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env*.local
+# git rm -r --cached */*/node_modules

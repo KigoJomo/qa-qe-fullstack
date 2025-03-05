@@ -1,0 +1,130 @@
+[
+  {
+    "id": "1",
+    "title": "Tech Conference 2023",
+    "description": "Annual conference for software developers and IT professionals.",
+    "date": "2023-09-15T09:00:00Z",
+    "location": "San Francisco Convention Center",
+    "organizer": "TechCorp Inc.",
+    "tickets": {
+      "available": 500,
+      "sold": 350,
+      "price": 199.99
+    },
+    "speakers": [
+      {
+        "name": "Jane Doe",
+        "topic": "Future of AI",
+        "bio": "AI Research Lead at TechLabs"
+      },
+      {
+        "name": "John Smith",
+        "topic": "Kubernetes in Production",
+        "bio": "Cloud Architect at CloudScale"
+      }
+    ],
+    "tags": ["technology", "software", "networking"]
+  },
+  {
+    "id": "2",
+    "title": "Music Festival",
+    "description": "Three-day outdoor music festival featuring local and international artists.",
+    "date": "2023-07-21T14:00:00Z",
+    "location": "Riverside Park",
+    "organizer": "SoundWave Productions",
+    "tickets": {
+      "available": 2000,
+      "sold": 1800,
+      "price": 89.99
+    },
+    "performers": [
+      "The Coding Beats",
+      "JSON & The Objects",
+      "404 Not Found"
+    ],
+    "tags": ["music", "entertainment", "outdoor"]
+  },
+  {
+    "id": "3",
+    "title": "Workshop: Web Development Basics",
+    "description": "Hands-on workshop covering HTML, CSS and JavaScript fundamentals.",
+    "date": "2023-08-05T10:00:00Z",
+    "location": "Online",
+    "organizer": "Code Academy",
+    "tickets": {
+      "available": 50,
+      "sold": 32,
+      "price": 49.99
+    },
+    "requirements": ["Laptop", "Basic programming knowledge"],
+    "tags": ["education", "workshop", "web development"]
+  },
+  {
+    "id": "4",
+    "title": "Data Science Summit",
+    "description": "Conference focused on big data, machine learning, and analytics.",
+    "date": "2023-10-10T08:30:00Z",
+    "location": "Boston Convention Hall",
+    "organizer": "DataMinds Organization",
+    "tickets": {
+      "available": 300,
+      "sold": 220,
+      "price": 149.99
+    },
+    "speakers": [
+      {
+        "name": "Alex Chen",
+        "topic": "Neural Networks Explained",
+        "bio": "ML Researcher at DataTech"
+      },
+      {
+        "name": "Sarah Wilson",
+        "topic": "Ethical AI Development",
+        "bio": "Ethics Director at AICore"
+      }
+    ],
+    "tags": ["data science", "AI", "machine learning"]
+  },
+  {
+    "id": "5",
+    "title": "Startup Networking Mixer",
+    "description": "Evening networking event for entrepreneurs and investors.",
+    "date": "2023-11-17T18:00:00Z",
+    "location": "TechHub Downtown",
+    "organizer": "Founder's Association",
+    "tickets": {
+      "available": 120,
+      "sold": 70,
+      "price": 25.00
+    },
+    "sponsors": ["VentureCapital Partners", "CloudTech Services", "StartupLegal"],
+    "tags": ["networking", "business", "startups"]
+  },
+  {
+    "id": "6",
+    "title": "Mobile Dev Conference",
+    "description": "Conference dedicated to iOS, Android, and cross-platform development.",
+    "date": "2023-12-05T09:00:00Z",
+    "location": "Seattle Tech Center",
+    "organizer": "MobileTech Group",
+    "tickets": {
+      "available": 400,
+      "sold": 175,
+      "price": 129.99
+    },
+    "speakers": [
+      {
+        "name": "Maria Rodriguez",
+        "topic": "Building Accessible Mobile UIs",
+        "bio": "Senior Designer at AppWorks"
+      },
+      {
+        "name": "David Kim",
+        "topic": "Performance Optimization for Mobile",
+        "bio": "Mobile Architect at FastApps Inc"
+      }
+    ],
+    "workshops": ["Flutter Deep Dive", "SwiftUI Mastery", "React Native Patterns"],
+    "tags": ["mobile", "development", "apps"]
+  }
+]
