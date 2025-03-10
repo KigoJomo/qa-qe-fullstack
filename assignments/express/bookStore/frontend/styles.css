@@ -1,93 +1,158 @@
+:root {
+  --primary: #2c3e50;
+  --secondary: #007bff;
+  --hover: #0056b3;
+}
+
 body {
-  font-family: 'Open Sans', sans-serif;
   margin: 0;
-  background-color: #f5f5f5;
-  padding: .5rem 2rem;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f8f9fa;
+  padding: 1rem;
 }
 
 h1 {
-  color: #333;
+  color: var(--primary);
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   margin: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
-select{
-  padding: 5px;
-  margin: 10px 0;
+.controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: .5rem 0rem;
+  background: white;
+}
+
+select {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
 #books-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 2rem;
+  padding: 0rem;
 }
 
 .book {
-  width: 20%; 
-  height: fit-content;
-  padding: 15px;
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  transition: transform 0.2s ease;
+  width: 100%;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .book:hover {
-  transform: scale(1.01);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .book img {
   width: 100%;
-  aspect-ratio: 3/4; 
-  height: auto;
-  display: block;
-  margin: 0 auto 10px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.book-content {
+  padding: 1.5rem;
+  flex-grow: 1;
 }
 
 .book h3 {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  color: #333;
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem;
+  color: var(--primary);
 }
 
 .book p {
-  margin: 5px 0;
-  font-size: 1rem;
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+  color: #666;
 }
 
-.book .price {
-  color: #e60000; /* Red for price visibility */
-  font-weight: bold;
+.price {
+  color: #28a745 !important;
+  font-size: 1.3rem !important;
+  font-weight: 700;
+  margin: 1rem 0 !important;
 }
 
 .more-info {
-  background-color: #007bff; /* Primary blue */
+  background: var(--secondary);
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
   cursor: pointer;
-  margin-top: 10px;
-  font-size: 0.9rem;
+  width: 100%;
+  font-weight: 600;
+  transition: background 0.2s ease;
+  margin-top: 1rem;
 }
 
 .more-info:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background: var(--hover);
 }
 
 .book-details {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #f0f0f0; /* Light gray for contrast */
-  border-radius: 3px;
+  background: #f8f9fa;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #eee;
 }
 
-/* Responsive Design */
+.loading, .error, .no-books {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  grid-column: 1 / -1;
+}
+
+.loading { color: #666; }
+.error { color: #dc3545; }
+.no-books { color: #666; }
+
 @media (max-width: 768px) {
-  .book {
-    width: 100%; /* Stack cards on smaller screens */
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  select {
+    width: 100%;
   }
 }

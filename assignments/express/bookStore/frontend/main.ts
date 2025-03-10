@@ -11,30 +11,63 @@ interface Book {
   price: number;
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  fetchBooks();
-  setupGenreFilter();
-});
+function fetchBooks(options: { genre?: string; sort?: string; direction?: string } = {}) {
+  const params = new URLSearchParams();
+  if (options.genre) params.append('genre', options.genre);
+  if (options.sort) params.append('sort', options.sort);
+  if (options.direction) params.append('direction', options.direction);
 
-function fetchBooks(genre: string = ''): void {
-  const url = genre
-    ? `http://localhost:3000/api/books?genre=${encodeURIComponent(genre)}`
-    : 'http://localhost:3000/api/books';
+  showLoading();
 
-  fetch(url)
-    .then((response) => {
+  (async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/books?${params}`);
       if (!response.ok) throw new Error('Failed to fetch books');
-      return response.json();
-    })
-    .then((books: Book[]) => {
+      const books: Book[] = await response.json();
       displayBooks(books);
+      if (!options.genre) populateGenres(books);
+    } catch (error) {
+      showError(error instanceof Error ? error : new Error('Unknown error'));
+    } finally {
+      hideLoading();
+    }
+  })();
+}
 
-      if (!genre) populateGenres(books);
-    })
-    .catch((error) => {
-      console.error('Error fetching books:', error);
-      displayBooks([]);
+function hideLoading() {
+  const loadingElement = document.querySelector('.loading');
+  if (loadingElement) {
+    loadingElement.remove();
+  }
+}
+
+function setupControls() {
+  const genreSelect = document.getElementById('genre-filter')!;
+  const sortSelect = document.getElementById('sort-by')!;
+  const directionSelect = document.getElementById('sort-direction')!;
+
+  const updateBooks = () => {
+    fetchBooks({
+      genre: (genreSelect as HTMLSelectElement).value,
+      sort: (sortSelect as HTMLSelectElement).value,
+      direction: (directionSelect as HTMLSelectElement).value,
     });
+  };
+
+  genreSelect.addEventListener('change', updateBooks);
+  sortSelect.addEventListener('change', updateBooks);
+  directionSelect.addEventListener('change', updateBooks);
+}
+
+function showLoading() {
+  const container = document.getElementById('books-container')!;
+  container.innerHTML = '<div class="loading">Loading books...</div>';
+}
+
+function showError(error: Error) {
+  const container = document.getElementById('books-container')!;
+  container.innerHTML = '<div class="error">Failed to load books. Please try again.</div>';
+  console.error('Error:', error);
 }
 
 function populateGenres(books: Book[]): void {
@@ -54,7 +87,7 @@ function displayBooks(books: Book[]): void {
 
   container.innerHTML = '';
   if (books.length === 0) {
-    container.innerHTML = '<p>No books found.</p>';
+    container.innerHTML = '<p class="no-books">No books found.</p>';
     return;
   }
 
@@ -63,18 +96,19 @@ function displayBooks(books: Book[]): void {
     bookDiv.className = 'book';
     bookDiv.innerHTML = `
       <img src="${book.image}" alt="${book.title}" />
-      <h3>${book.title}</h3>
-      <p><strong>Author:</strong> ${book.author}</p>
-      <p><strong>Genre:</strong> ${book.genre}</p>
-      <p><strong>Price:</strong> <span class="price">$${book.price.toFixed(
-        2
-      )}</span></p>
-      <button class="more-info" data-id="${book.id}">More Info</button>
-      <div class="book-details" id="details-${book.id}" style="display: none;">
+      <div class="book-content">
+        <h3>${book.title}</h3>
+        <p><strong>Author:</strong> ${book.author}</p>
+        <p><strong>Genre:</strong> ${book.genre}</p>
         <p><strong>Year:</strong> ${book.year}</p>
-        <p><strong>Pages:</strong> ${book.pages}</p>
-        <p><strong>Publisher:</strong> ${book.publisher}</p>
-        <p><strong>Description:</strong> ${book.description}</p>
+        <p><strong>Price:</strong> <span class="price">Ksh ${book.price.toLocaleString()}</span></p>
+        <button class="more-info" data-id="${book.id}">More Info</button>
+        <div class="book-details" id="details-${book.id}" style="display: none;">
+          <p><strong>Year:</strong> ${book.year}</p>
+          <p><strong>Pages:</strong> ${book.pages}</p>
+          <p><strong>Publisher:</strong> ${book.publisher}</p>
+          <p><strong>Description:</strong> ${book.description}</p>
+        </div>
       </div>
     `;
     container.appendChild(bookDiv);
@@ -98,10 +132,7 @@ function displayBooks(books: Book[]): void {
   });
 }
 
-function setupGenreFilter(): void {
-  const select = document.getElementById('genre-filter') as HTMLSelectElement;
-  select.addEventListener('change', (event) => {
-    const genre = (event.target as HTMLSelectElement).value;
-    fetchBooks(genre);
-  });
-}
+window.addEventListener('DOMContentLoaded', () => {
+  fetchBooks();
+  setupControls();
+});
