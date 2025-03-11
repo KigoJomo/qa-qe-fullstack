@@ -8,7 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-// Fetch books with optional genre, sort, and direction filters
 function fetchBooks(options = {}) {
     const params = new URLSearchParams();
     if (options.genre)
@@ -36,14 +35,12 @@ function fetchBooks(options = {}) {
         }
     }))();
 }
-// Hide loading state
 function hideLoading() {
     const loadingElement = document.querySelector('.loading');
     if (loadingElement) {
         loadingElement.remove();
     }
 }
-// Set up genre, sort, and direction controls
 function setupControls() {
     const genreSelect = document.getElementById('genre-filter');
     const sortSelect = document.getElementById('sort-by');
@@ -59,18 +56,15 @@ function setupControls() {
     sortSelect.addEventListener('change', updateBooks);
     directionSelect.addEventListener('change', updateBooks);
 }
-// Show loading state
 function showLoading() {
     const container = document.getElementById('books-container');
     container.innerHTML = '<div class="loading">Loading books...</div>';
 }
-// Show error state
 function showError(error) {
     const container = document.getElementById('books-container');
     container.innerHTML = '<div class="error">Failed to load books. Please try again.</div>';
     console.error('Error:', error);
 }
-// Populate genre filter dropdown
 function populateGenres(books) {
     const genres = Array.from(new Set(books.map((book) => book.genre)));
     const select = document.getElementById('genre-filter');
@@ -81,7 +75,6 @@ function populateGenres(books) {
         select.appendChild(option);
     });
 }
-// Display books in the UI
 function displayBooks(books) {
     const container = document.getElementById('books-container');
     if (!container)
@@ -100,7 +93,6 @@ function displayBooks(books) {
         <h3>${book.title}</h3>
         <p><strong>Author:</strong> ${book.author}</p>
         <p><strong>Genre:</strong> ${book.genre}</p>
-        <p><strong>Year:</strong> ${book.year}</p>
         <p><strong>Price:</strong> <span class="price">Ksh ${book.price.toLocaleString()}</span></p>
         <button class="more-info" data-id="${book.id}">More Info</button>
         <div class="book-details" id="details-${book.id}" style="display: none;">
@@ -113,7 +105,6 @@ function displayBooks(books) {
     `;
         container.appendChild(bookDiv);
     });
-    // Add event listeners for "More Info" buttons
     const moreInfoButtons = document.querySelectorAll('.more-info');
     moreInfoButtons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -132,7 +123,6 @@ function displayBooks(books) {
         });
     });
 }
-// Initialize the app
 window.addEventListener('DOMContentLoaded', () => {
     fetchBooks();
     setupControls();

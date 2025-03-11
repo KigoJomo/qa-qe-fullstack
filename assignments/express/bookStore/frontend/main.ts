@@ -100,7 +100,6 @@ function displayBooks(books: Book[]): void {
         <h3>${book.title}</h3>
         <p><strong>Author:</strong> ${book.author}</p>
         <p><strong>Genre:</strong> ${book.genre}</p>
-        <p><strong>Year:</strong> ${book.year}</p>
         <p><strong>Price:</strong> <span class="price">Ksh ${book.price.toLocaleString()}</span></p>
         <button class="more-info" data-id="${book.id}">More Info</button>
         <div class="book-details" id="details-${book.id}" style="display: none;">
