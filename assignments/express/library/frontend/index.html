@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shelfie Library</title>
+    <link rel="stylesheet" href="/styles/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  </head>
+  <body class="w-full h-full overflow-y-scroll p-0 flex flex-col gap-4">
+    <header class="w-full sticky top-0 z-50 p-2 backdrop-blur">
+      <div
+        class="w-full bg-gray-900 rounded-2xl py-2 px-4 flex items-center justify-between border border-gray-400">
+        <div class="left flex items-center gap-2">
+          <span class="material-symbols-outlined md:hidden">drag_handle</span>
+          <h3 class="!text-amber-500 !lowercase caveat">shelfie</h3>
+        </div>
+
+        <div class="right flex items-center md:gap-4">
+          <a href="#" class="flex md:hidden items-center">
+            <span class="material-symbols-outlined"> account_circle </span>
+          </a>
+
+          <a href="/auth/login"><button class="btn !hidden md:!flex">login</button></a>
+        </div>
+      </div>
+    </header>
+
+    <button
+      id="filter-toggle"
+      class="w-fit h-auto px-2 aspect-square flex items-center justify-center bg-gray-600 border border-gray-400 rounded-full sticky md:hidden top-14 z-40 ml-auto mr-4">
+      <span class="material-symbols-outlined">filter_list</span>
+      <!-- <span class="material-symbols-outlined">close</span> -->
+    </button>
+
+    <main class="w-full flex gap-6 md:pl-4">
+      <div
+        id="filter-menu"
+        class="filter-menu fixed md:sticky top-0 md:top-18 z-30 w-full md:w-1/4 h-screen md:h-screen backdrop-blur-xl md:bg-gray-900 md:rounded-2xl hidden md:!flex flex-col gap-4 pt-20 md:py-4 px-4">
+        <h2 class="flex md:hidden">filter books</h2>
+        <h4 class="hidden md:flex">filter books</h4>
+
+        <div id="genre-publisher-filter" class="filter-section">
+          <div id="genre-select" class="input-wrapper">
+            <label for="">genre</label>
+            <select name="" id="">
+            </select>
+          </div>
+
+          <div id="publisher-select" class="input-wrapper">
+            <label for="">publisher</label>
+            <select name="" id="">
+            </select>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <div id="sort-options" class="input-wrapper">
+            <label for="">sort by:</label>
+
+            <div class="radio-input">
+              <input
+                type="radio"
+                id="sort-title"
+                name="sort-by"
+                value="title"
+                checked />
+              <label for="sort-title" class="">title</label>
+            </div>
+            <div class="radio-input">
+              <input
+                type="radio"
+                id="sort-year"
+                name="sort-by"
+                value="year" />
+              <label for="sort-year" class="">year</label>
+            </div>
+            <div class="radio-input">
+              <input
+                type="radio"
+                id="sort-pages"
+                name="sort-by"
+                value="pages" />
+              <label for="sort-pages" class="">pages</label>
+            </div>
+          </div>
+        </div>
+
+        <button id="apply-filters-mobile" class="apply-filters btn md:!hidden flex">
+          apply filters
+        </button>
+        <button id="apply-filters-desktop" class="apply-filters btn-secondary !hidden md:!flex">
+          apply filters
+        </button>
+      </div>
+
+      <section id="book-grid" class="grid grid-cols-2 md:grid-cols-3 gap-2 gap-y-4 md:gap-4">
+        <!--  -->
+      </section>
+    </main>
+
+    <!--  -->
+
+    <script src="./dist/index.js"></script>
+  </body>
+</html>

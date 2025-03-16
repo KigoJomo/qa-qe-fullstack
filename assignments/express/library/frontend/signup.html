@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - Shelfie</title>
+    <link rel="stylesheet" href="/styles/output.css" />
+  </head>
+  <body class="flex items-center justify-center h-screen p-0">
+    <div
+      class="w-full md:w-128 h-full md:h-fit p-6 md:p-12 bg-gray-800 md:rounded-xl md:border border-gray-400 flex flex-col items-center justify-center gap-6">
+      <div class="flex items-center gap-4">
+        <h2 class="!text-amber-500 !lowercase caveat">shelfie</h2>
+        <span>|</span>
+        <h4 class="">sign up</h4>
+      </div>
+
+      <hr class="w-full border-gray-600" />
+
+      <form
+        id="signup-form"
+        action="/auth/signup"
+        method="post"
+        class="w-full flex flex-col gap-4">
+        <div class="w-full flex flex-col md:flex-row gap-4">
+          <div class="input-wrapper w-full">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required />
+          </div>
+
+          <div class="input-wrapper w-full">
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required />
+          </div>
+        </div>
+
+        <div class="input-wrapper">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="input-wrapper">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit" class="btn">sign up</button>
+      </form>
+
+      <p class="text-center text-gray-400">
+        Already have an account?
+        <a
+          href="/auth/login"
+          class="!text-amber-400 underline underline-offset-0 hover:underline-offset-2 transition-all duration-300"
+          >Log in</a
+        >
+      </p>
+    </div>
+  </body>
+</html>
