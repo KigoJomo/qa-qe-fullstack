@@ -7,7 +7,11 @@ const bookGrid = document.querySelector('#book-grid');
 const genreSelect = document.querySelector('#genre-select select');
 const publisherSelect = document.querySelector('#publisher-select select');
 const applyFilterBtns = document.querySelectorAll('.apply-filters');
+const profileBtn = document.querySelector('#profile-btn');
+const profileMenu = document.querySelector('.profile-menu');
+let profileMenuButton = null;
 let filterMenuOpen = false;
+let profileMenuOpen = false;
 let allBooks = [];
 let publishers, genres;
 const sortParams = [
@@ -38,12 +42,14 @@ const handleFilterToggle = () => {
 const bookHtmlTemplate = (book) => {
     return `
     <div
-      class="book w-full aspect-[1] bg-gray-900 hover:bg-gray-800 border border-gray-500 hover:border-gray-200 rounded-2xl flex flex-col gap-2 pb-4 transition-all duration-300">
+      class="book w-full aspect-[10.5/16] bg-gray-900 hover:bg-gray-800 border border-gray-500 hover:border-gray-200 rounded-2xl overflow-hidden flex flex-col gap-2 transition-all duration-300 relative">
       <img
         src="${book.image}"
         alt="${book.title}"
-        class="w-full aspect-square rounded-t-3xl" />
-      <div class="w-full flex flex-col gap-2 px-2 md:px-4">
+        class="w-full aspect-[10.5/16] absolute z-[5]" 
+      />
+
+      <div class="w-full aspect-[10.5/16] z-[6] flex flex-col justify-end gap-2 px-2 md:px-4 pb-4 tint">
         <span
           class="capitalize text-base font-bold"
           title="${book.title}"
@@ -182,7 +188,72 @@ const fetchBooks = async () => {
         return null;
     }
 };
+const checkLoginStatus = async () => {
+    try {
+        const response = await fetch('/auth/me', {
+            credentials: 'include',
+        });
+        if (response.ok) {
+            const data = await response.json();
+            if (data.user) {
+                profileBtn.innerHTML = `
+          <button id="profile-menu-button" class="flex items-center">
+            <span class="material-symbols-outlined"> account_circle </span>
+          </button>
+          `;
+                profileMenuButton = document.querySelector('#profile-menu-button');
+                profileMenuButton?.addEventListener('click', toggleProfileMenu);
+                populateProfileMenu(data.user);
+                console.log(data.user);
+            }
+            else {
+                profileBtn.innerHTML = `
+          <a href="/auth/login"><button class="btn">login</button></a>
+        `;
+            }
+        }
+    }
+    catch (error) {
+        console.error("Couldn't check your login status bruh ...", error);
+    }
+};
+const populateProfileMenu = (user) => {
+    const detailsDiv = document.querySelector('#user-details');
+    detailsDiv.innerHTML = `
+    <div id="user-name" class="profile-detail">
+      <p>Name:</p>
+      <span>${user.first_name} ${user.last_name}</span>
+    </div>
+    <div id="email" class="profile-detail">
+      <p>email:</p>
+      <span>${user.email}</span>
+    </div>
+    <div id="role" class="profile-detail">
+      <p>role:</p>
+      <span>
+        ${user.role === 1
+        ? '<a href="/admin#books" class="!text-amber-500 hover:!text-amber-200">Admin</a>'
+        : user.role === 2
+            ? 'Librarian'
+            : 'Borrower'}
+      </span>
+    </div>
+  `;
+};
+const toggleProfileMenu = async () => {
+    if (!profileMenuOpen) {
+        profileMenu.classList.add('flex');
+        profileMenu.classList.remove('hidden');
+        profileMenuOpen = true;
+    }
+    else {
+        profileMenu.classList.add('hidden');
+        profileMenu.classList.remove('false');
+        profileMenuOpen = false;
+    }
+};
 fetchBooks();
+checkLoginStatus();
 filterToggle?.addEventListener('click', handleFilterToggle);
 applyFiltersMobile?.addEventListener('click', handleFilterToggle);
 applyFilterBtns.forEach((btn) => {

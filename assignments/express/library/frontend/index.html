@@ -18,13 +18,35 @@
           <h3 class="!text-amber-500 !lowercase caveat">shelfie</h3>
         </div>
 
-        <div class="right flex items-center md:gap-4">
+        <div id="profile-btn" class="right flex items-center md:gap-4">
           <a href="#" class="flex md:hidden items-center">
             <span class="material-symbols-outlined"> account_circle </span>
           </a>
 
-          <a href="/auth/login"><button class="btn !hidden md:!flex">login</button></a>
+          <a href="/auth/login">
+            <button class="btn !hidden md:!flex">login</button>
+          </a>
         </div>
+      </div>
+
+      <div
+        class="profile-menu w-64 fixed top-full right-2 bg-gray-900 rounded-2xl border border-gray-400 p-4 hidden flex-col gap-4">
+        <div class="profile-info flex items-center gap-2">
+          <span class="material-symbols-outlined"> account_circle </span>
+          <p class="">Profile</p>
+        </div>
+
+        <hr class="border border-gray-700" >
+
+        <div id="user-details" class="flex flex-col gap-4">
+        </div>
+
+        <hr class="border border-gray-700" >
+        
+        <a href="/auth/logout" class="w-full flex items-center gap-2 hover:*:!text-amber-500 pl-2">
+          <span class="material-symbols-outlined !text-base"> logout </span>
+          <span class="!text-sm">Logout</span>
+        </a>
       </div>
     </header>
 
@@ -45,14 +67,12 @@
         <div id="genre-publisher-filter" class="filter-section">
           <div id="genre-select" class="input-wrapper">
             <label for="">genre</label>
-            <select name="" id="">
-            </select>
+            <select name="" id=""></select>
           </div>
 
           <div id="publisher-select" class="input-wrapper">
             <label for="">publisher</label>
-            <select name="" id="">
-            </select>
+            <select name="" id=""></select>
           </div>
         </div>
 
@@ -70,11 +90,7 @@
               <label for="sort-title" class="">title</label>
             </div>
             <div class="radio-input">
-              <input
-                type="radio"
-                id="sort-year"
-                name="sort-by"
-                value="year" />
+              <input type="radio" id="sort-year" name="sort-by" value="year" />
               <label for="sort-year" class="">year</label>
             </div>
             <div class="radio-input">
@@ -88,15 +104,21 @@
           </div>
         </div>
 
-        <button id="apply-filters-mobile" class="apply-filters btn md:!hidden flex">
+        <button
+          id="apply-filters-mobile"
+          class="apply-filters btn md:!hidden flex">
           apply filters
         </button>
-        <button id="apply-filters-desktop" class="apply-filters btn-secondary !hidden md:!flex">
+        <button
+          id="apply-filters-desktop"
+          class="apply-filters btn-secondary !hidden md:!flex">
           apply filters
         </button>
       </div>
 
-      <section id="book-grid" class="grid grid-cols-2 md:grid-cols-3 gap-2 gap-y-4 md:gap-4">
+      <section
+        id="book-grid"
+        class="grid grid-cols-2 md:grid-cols-3 gap-2 gap-y-4 md:gap-8">
         <!--  -->
       </section>
     </main>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Shelfie Library</title>
+    <link rel="stylesheet" href="/styles/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  </head>
+
+  <body class="w-full h-full overflow-hidden p-0 flex flex-col gap-2">
+    <header class="w-full sticky top-0 z-50 p-2 backdrop-blur">
+      <div
+        class="w-full bg-gray-900 rounded-2xl py-2 px-4 flex items-center justify-between border border-gray-400">
+        <a href="/" class="left flex items-center gap-2">
+          <h3 class="!text-amber-500 !lowercase caveat">shelfie</h3>
+        </a>
+
+        <div id="profile-btn" class="right flex items-center md:gap-4">
+          <p class="border border-gray-300 bg-gray-600 px-4 py-1 rounded-full">
+            Admin
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="w-full h-full overflow-hidden p-4 pt-0 flex gap-6">
+      <aside
+        class="w-1/5 h-full bg-gray-900 rounded-2xl p-4 flex flex-col gap-4 filter-menu">
+        <h4>dashboard</h4>
+
+        <hr class="border-gray-600" />
+
+        <ul class="w-full flex flex-col gap-4">
+          <a
+            href="#dashboard"
+            class="w-full flex items-center gap-2 bg-gray-800 px-4 py-2 rounded-2xl cursor-pointer border border-gray-700 hover:border-gray-400 transition-all duration-300">
+            <span class="material-symbols-outlined !text-lg !text-gray-400"
+              >dashboard</span
+            >
+            <p class="capitalize !text-sm">dashboard</p>
+          </a>
+
+          <a
+            href="#books"
+            class="w-full flex items-center gap-2 bg-gray-800 px-4 py-2 rounded-2xl cursor-pointer border border-gray-700 hover:border-gray-400 transition-all duration-300">
+            <span class="material-symbols-outlined !text-lg !text-gray-400"
+              >book</span
+            >
+            <p class="capitalize !text-sm">books</p>
+          </a>
+
+          <a
+            href="#users"
+            class="w-full flex items-center gap-2 bg-gray-800 px-4 py-2 rounded-2xl cursor-pointer border border-gray-700 hover:border-gray-400 transition-all duration-300">
+            <span class="material-symbols-outlined !text-lg !text-gray-400"
+              >person</span
+            >
+            <p class="capitalize !text-sm">users</p>
+          </a>
+
+          <a
+            href="#settings"
+            class="w-full flex items-center gap-2 bg-gray-800 px-4 py-2 rounded-2xl cursor-pointer border border-gray-700 hover:border-gray-400 transition-all duration-300">
+            <span class="material-symbols-outlined !text-lg !text-gray-400"
+              >settings</span
+            >
+            <p class="capitalize !text-sm">settings</p>
+          </a>
+        </ul>
+      </aside>
+
+      <section
+        class="w-4/5 h-full bg-gray-900 rounded-2xl !p-0 flex overflow-hidden filter-menu">
+        <article id="dashboard" class="">
+          <h4 class="">dashboard</h4>
+          <hr class="border-gray-600" />
+
+          <div class="w-full h-full flex flex-col gap-4 mt-4">
+            <div class="w-full h-1/2 bg-gray-800 rounded-2xl"></div>
+            <div class="w-full h-1/2 bg-gray-800 rounded-2xl"></div>
+          </div>
+        </article>
+
+        <article id="books" class="relative">
+          <div class="w-full flex items-center justify-between gap-6">
+            <h4 class="">books</h4>
+
+            <button id="add-book-btn" class="btn">
+              <span class="material-symbols-outlined">add</span>
+              <p class="capitalize !text-sm">add book</p>
+            </button>
+          </div>
+
+          <div
+            class="book-table w-full h-full flex flex-col gap-4 overflow-y-scroll scrollbar-thin rounded-t-xl relative">
+            <!-- Table Header -->
+            <div
+              class="w-full grid grid-cols-6 gap-4 px-6 py-3 bg-gray-800 rounded-t-xl font-medium text-gray-300 sticky top-0">
+              <div>Cover</div>
+              <div>Title/Author</div>
+              <div>Genre</div>
+              <div>Copies</div>
+              <div>Status</div>
+              <div class="text-right">Actions</div>
+            </div>
+
+            <div id="admin-book-rows"></div>
+          </div>
+
+          <!-- Add Book Modal -->
+          <div
+            id="add-book-modal"
+            class="fixed top-0 left-0 z-[51] w-full h-screen bg-gray-900/80 backdrop-blur-md hidden items-center justify-center">
+            <div
+              class="w-3/4 h-auto bg-gray-800 rounded-2xl py-6 px-12 flex flex-col gap-4 relative">
+              <button id="close-book-modal" class="absolute right-12 top-8">
+                <span class="material-symbols-outlined">close</span>
+              </button>
+
+              <h4 class="text-center">add a new book</h4>
+
+              <hr class="border-gray-600" />
+
+              <form id="add-book-form" class="w-full flex flex-col gap-4">
+                <div class="w-full flex gap-12">
+                  <div class="w-1/2 flex flex-col gap-4">
+                    <div class="input-wrapper">
+                      <label for="">title</label>
+                      <input type="text" name="title" id="" />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="">author</label>
+                      <input type="text" name="author" id="" />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="">genre</label>
+                      <input type="text" name="genre" id="" />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="">year</label>
+                      <input type="number" name="year" id="" />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="pages">pages</label>
+                      <input type="number" name="pages" id="pages" />
+                    </div>
+                  </div>
+                  <div class="w-1/2 flex flex-col gap-4">
+                    <div class="input-wrapper">
+                      <label for="publisher">publisher</label>
+                      <input type="text" name="publisher" id="publisher" />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="description">description</label>
+                      <textarea
+                        name="description"
+                        id="description"
+                        rows="3"></textarea>
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="image">image url</label>
+                      <input type="url" name="image" id="image" />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="price">price</label>
+                      <input
+                        type="number"
+                        name="price"
+                        id="price"
+                        step="0.01" />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="total_copies">total copies</label>
+                      <input
+                        type="number"
+                        name="total_copies"
+                        id="total_copies" />
+                    </div>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn !mt-0">add book</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Edit Book Modal -->
+          <div
+            id="edit-book-modal"
+            class="fixed top-0 left-0 z-[52] w-full h-screen bg-gray-900/80 backdrop-blur-md hidden items-center justify-center">
+            <div
+              class="w-3/4 h-auto bg-gray-800 rounded-2xl py-6 px-12 flex flex-col gap-4 relative">
+              <button id="close-edit-modal" class="absolute right-12 top-8">
+                <span class="material-symbols-outlined">close</span>
+              </button>
+              <h4 class="text-center">Edit Book</h4>
+              <hr class="border-gray-600" />
+              <form id="edit-book-form" class="w-full flex flex-col gap-4">
+                <!-- Hidden input to store the book ID -->
+                <input type="hidden" id="edit-book-id" name="book_id" />
+                <div class="w-full flex gap-12">
+                  <div class="w-1/2 flex flex-col gap-4">
+                    <div class="input-wrapper">
+                      <label for="edit-title">Title</label>
+                      <input
+                        type="text"
+                        id="edit-title"
+                        name="title"
+                        required />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="edit-author">Author</label>
+                      <input
+                        type="text"
+                        id="edit-author"
+                        name="author"
+                        required />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="edit-genre">Genre</label>
+                      <input
+                        type="text"
+                        id="edit-genre"
+                        name="genre"
+                        required />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="edit-year">Year</label>
+                      <input
+                        type="number"
+                        id="edit-year"
+                        name="year"
+                        required />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="edit-pages">Pages</label>
+                      <input
+                        type="number"
+                        id="edit-pages"
+                        name="pages"
+                        required />
+                    </div>
+                  </div>
+                  <div class="w-1/2 flex flex-col gap-4">
+                    <div class="input-wrapper">
+                      <label for="edit-publisher">Publisher</label>
+                      <input
+                        type="text"
+                        id="edit-publisher"
+                        name="publisher"
+                        required />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="edit-description">Description</label>
+                      <textarea
+                        id="edit-description"
+                        name="description"
+                        rows="3"
+                        required></textarea>
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="edit-image">Image URL</label>
+                      <input type="url" id="edit-image" name="image" required />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="edit-price">Price</label>
+                      <input
+                        type="number"
+                        id="edit-price"
+                        name="price"
+                        step="0.01"
+                        required />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="edit-total_copies">Total Copies</label>
+                      <input
+                        type="number"
+                        id="edit-total_copies"
+                        name="total_copies"
+                        required />
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn">Save Changes</button>
+              </form>
+            </div>
+          </div>
+        </article>
+
+        <article id="users" class="flex-col gap-4 p-4">
+          <h4 class="">Users</h4>
+          <hr class="border-gray-600" />
+
+          <!-- Users Table Header -->
+          <div
+            class="w-full grid grid-cols-4 gap-4 px-6 py-3 bg-gray-800 rounded-t-xl font-medium text-gray-300 sticky top-0">
+            <div>Name</div>
+            <div>Email</div>
+            <div>Role</div>
+            <div class="text-right">Actions</div>
+          </div>
+
+          <!-- Container for dynamically rendered user rows -->
+          <div id="admin-user-rows"></div>
+
+          <!-- Edit User Modal -->
+          <div
+            id="edit-user-modal"
+            class="fixed top-0 left-0 z-[52] w-full h-screen bg-gray-900/80 backdrop-blur-md hidden items-center justify-center">
+            <div
+              class="w-3/4 h-auto bg-gray-800 rounded-2xl py-6 px-12 flex flex-col gap-4 relative">
+              <button
+                id="close-user-edit-modal"
+                class="absolute right-12 top-8">
+                <span class="material-symbols-outlined">close</span>
+              </button>
+              <h4 class="text-center">Edit User</h4>
+              <hr class="border-gray-600" />
+              <form id="edit-user-form" class="w-full flex flex-col gap-4">
+                <!-- Hidden input for user id -->
+                <input type="hidden" id="edit-user-id" name="user_id" />
+                <div class="w-full flex gap-12">
+                  <div class="w-1/2 flex flex-col gap-4">
+                    <div class="input-wrapper">
+                      <label for="edit-first-name">First Name</label>
+                      <input
+                        type="text"
+                        id="edit-first-name"
+                        name="first_name"
+                        required />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="edit-last-name">Last Name</label>
+                      <input
+                        type="text"
+                        id="edit-last-name"
+                        name="last_name"
+                        required />
+                    </div>
+                  </div>
+                  <div class="w-1/2 flex flex-col gap-4">
+                    <div class="input-wrapper">
+                      <label for="edit-email">Email</label>
+                      <input
+                        type="email"
+                        id="edit-email"
+                        name="email"
+                        required />
+                    </div>
+                    <div class="input-wrapper">
+                      <label for="edit-role">Role</label>
+                      <select id="edit-role" name="role_id" required>
+                        <option value="1">Admin</option>
+                        <option value="2">Librarian</option>
+                        <option value="3">Borrower</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn">Save Changes</button>
+              </form>
+            </div>
+          </div>
+        </article>
+
+        <article id="settings" class="">
+          <h4 class="">settings</h4>
+          <hr class="border-gray-600" />
+
+          <div class="w-full h-full flex flex-col gap-4 mt-4">
+            <div class="w-full h-1/2 bg-gray-800 rounded-2xl"></div>
+            <div class="w-full h-1/2 bg-gray-800 rounded-2xl"></div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="./dist/admin.js"></script>
+  </body>
+</html>

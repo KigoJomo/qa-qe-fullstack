@@ -1,10 +1,16 @@
+import { setupAliases } from 'import-aliases';
+setupAliases()
+
 import express from 'express';
-import booksRouter from './routes/books';
-import authRouter from "./routes/auth";
+import booksRouter from '@app/routes/books';
+import authRouter from "@app/routes/auth";
+import adminRouter from "@app/routes/admin"
+import usersRouter from "@app/routes/users";
 import dotenv from 'dotenv';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import cors from 'cors'
+
 
 dotenv.config();
 
@@ -31,9 +37,11 @@ app.get('/', (req, res) => {
 // mount routes
 app.use('/books', booksRouter);
 app.use("/auth", authRouter);
+app.use("/admin", adminRouter)
+app.use("/users", usersRouter);
 
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`The server is running on port: ${PORT}`);
-});
+}); 

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import pool from '../config/db';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { AuthRequest } from '@app/middleware/auth';
 
 const SALT_ROUNDS = Number(process.env.SALT_ROUNDS) || 10;
 const JWT_SECRET = process.env.JWT_SECRET!;
@@ -37,7 +38,7 @@ export const signup = async (req: Request, res: Response) => {
     const newUser = newUserResult.rows[0];
 
     const token = jwt.sign(
-      { user_id: newUser.user_id, email: newUser.email, role: newUser.role_id },
+      { user_id: newUser.user_id, email: newUser.email, role: newUser.role_id, first_name: newUser.first_name, last_name: newUser.last_name },
       JWT_SECRET,
       { expiresIn: '1h' }
     );
@@ -83,13 +84,13 @@ export const login = async (req: Request, res: Response) => {
     }
 
     const token = jwt.sign(
-      { user_id: user.user_id, email: user.email, role: user.role_id },
+      { user_id: user.user_id, email: user.email, role: user.role_id, first_name: user.first_name, last_name: user.last_name },
       JWT_SECRET,
       { expiresIn: '1h' }
     );
 
     // res.json({ message: 'Yooooww!! Welcome back dude!!', token });
-    res.cookie("token", token, { httpOnly: true, maxAge: 3600000 })
+    res.cookie("token", token, { httpOnly: true, maxAge: 86400000 })
     res.redirect("/")
   } catch (error) {
     console.error(
@@ -100,3 +101,20 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
+export const getCurrentUser = (req: AuthRequest, res: Response) => {
+  if(req.user){
+    res.json({ user: req.user })
+  } else{
+    res.status(401).send("Ain't no authenticated user 'round here!");
+  }
+}
+
+export const logout = (req: Request, res: Response) => {
+  res.cookie('token', '', {
+    httpOnly: true,
+    expires: new Date(0),
+    path: '/'
+  });
+
+  res.redirect('/')
+}

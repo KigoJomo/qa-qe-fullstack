@@ -2,10 +2,6 @@
 
 @import 'tailwindcss';
 
-@theme {
-  /*  */
-}
-
 * {
   font-family: 'Lato', sans-serif;
   box-sizing: border-box !important;
@@ -85,8 +81,13 @@ span {
   @apply text-white;
 }
 
+img {
+  object-fit: cover;
+  object-position: center;
+}
+
 .caveat {
-  font-family: "Caveat Brush", cursive;
+  font-family: 'Caveat Brush', cursive;
   font-weight: 400;
   font-style: normal;
 }
@@ -123,14 +124,19 @@ button {
   @apply text-amber-500 bg-transparent hover:bg-gray-700 px-6 py-2 rounded-full capitalize flex items-center justify-center border border-amber-500 transition-all duration-300;
 }
 .input-wrapper {
-  @apply flex flex-col gap-1;
+  @apply w-full flex flex-col gap-1;
 
   label {
     @apply text-gray-300 capitalize;
   }
 
-  input {
+  input,
+  textarea {
     @apply w-full text-white bg-transparent outline-none focus:outline-none border border-gray-500 focus:border-amber-500 px-4 py-2 rounded-full transition-all duration-300;
+  }
+
+  textarea {
+    @apply rounded-2xl;
   }
 
   select {
@@ -141,13 +147,79 @@ button {
     }
   }
 
-  .radio-input{
+  .radio-input {
     @apply flex items-center gap-1 pl-2;
 
-    input{
+    input {
       @apply accent-amber-500 w-fit;
     }
   }
+}
+
+.profile-detail {
+  @apply flex items-center gap-2;
+
+  p {
+    @apply capitalize !text-xs w-12 border-l-4 border-gray-600 pl-2;
+  }
+
+  span,
+  span a {
+    @apply !text-sm text-gray-400;
+  }
+}
+
+.scrollbar-thin {
+  scrollbar-color: #4b5563 #1f2937;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #1f2937;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #374151;
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background-color: #374151;
+  }
+  &::-webkit-scrollbar-corner {
+    background-color: #1f2937;
+  }
+  &::-webkit-scrollbar-button {
+    background-color: #1f2937;
+  }
+  &::-webkit-scrollbar-button:vertical:decrement {
+    background-color: #1f2937;
+  }
+  &::-webkit-scrollbar-button:vertical:increment {
+    background-color: #1f2937;
+  }
+  &::-webkit-scrollbar-button:horizontal:decrement {
+    background-color: #1f2937;
+  }
+  &::-webkit-scrollbar-button:horizontal:increment {
+    background-color: #1f2937;
+  }
+}
+
+.tint {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.9) 80%,
+    rgb(0, 0, 0) 100%
+  );
 }
 
 html {
@@ -156,6 +228,18 @@ html {
   body {
     section {
       @apply m-0 px-4;
+
+      article {
+        @apply w-full h-full flex flex-col gap-4 flex-shrink-0 p-4;
+
+        .section-title {
+          @apply text-2xl font-bold text-white;
+        }
+
+        .section-content {
+          @apply w-full h-full flex flex-col gap-4;
+        }
+      }
     }
   }
 }
