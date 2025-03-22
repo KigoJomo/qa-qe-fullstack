@@ -64,9 +64,12 @@ const bookHtmlTemplate = (book) => {
           <span class="capitalize text-xs">${book.genre}</span>
           <span class="capitalize text-xs whitespace-nowrap">${book.pages} pages</span>
         </div>
-        <span class="capitalize text-xs border-l-4 border-amber-300 pl-1"
-          >released: ${book.year}</span
-        >
+        <div class="w-full flex items-center justify-between gap-6">
+          <span class="capitalize text-xs border-l-4 border-amber-300 pl-1">
+            released: ${book.year}
+          </span> 
+          <button class="btn !text-xs">borrow</button>  
+        </div>
       </div>
     </div>
   `;

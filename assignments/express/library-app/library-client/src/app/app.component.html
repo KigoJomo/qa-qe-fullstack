@@ -1,0 +1,20 @@
+<!-- app.component.html -->
+<mat-toolbar color="primary">
+  <span>Library Client</span>
+  <span class="spacer"></span>
+  @if (authService.isAuthenticated()) {
+  <div>
+    <a href="/" mat-button>Home</a>
+    <button mat-button (click)="authService.logout()">Logout</button>
+  </div>
+  } @if (!authService.isAuthenticated()) {
+  <div class="">
+    <a mat-button href="/login">Login</a>
+    <a mat-button href="/signup">Sign Up</a>
+  </div>
+  }
+</mat-toolbar>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

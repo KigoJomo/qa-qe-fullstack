@@ -1,0 +1,9 @@
+<!-- home.component.html -->
+<div class="welcome-message">
+  <h1>Welcome to the Library!</h1>
+  @if (authService.isAuthenticated()) {
+    <p>
+      Logged in as {{ authService.currentUser?.first_name }}
+    </p>
+  }
+</div>
